@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { Repository } from 'typeorm';
+import { InsertResult, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Mydata } from 'src/entities/mydata.entity';
 
@@ -8,10 +8,14 @@ import { Mydata } from 'src/entities/mydata.entity';
 export class MydataService {
   constructor(
     @InjectRepository(Mydata)
-    private mydataRepository: Repository<Mydata>,
+    private readonly mydataRepository: Repository<Mydata>,
   ) {}
 
   getAll(): Promise<Mydata[]> {
     return this.mydataRepository.find();
+  }
+
+  addMydata(data: any): Promise<InsertResult> {
+    return this.mydataRepository.insert(data);
   }
 }

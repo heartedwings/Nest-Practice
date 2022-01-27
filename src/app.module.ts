@@ -14,7 +14,7 @@ import { Mydata } from './entities/mydata.entity';
       username: 'heartedwings',
       password: 'Chihiro1023',
       database: 'postgres',
-      synchronize: false,
+      synchronize: true,
       entities: [Mydata],
     }),
     MydataModule,
